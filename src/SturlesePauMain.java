@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
-public class Main {
+public class SturlesePauMain {
     public static void main(String[] args) {
 
         //Añadir listas
@@ -20,15 +21,21 @@ public class Main {
         funFacts.add("Podria pasarme el dia haciendo deporte");
         funFacts.add("Duermo menos de lo que deberia \uD83D\uDE02");
 
-        //Crear el objeto perfil y mostrar la información
-        Perfil perfil = new Perfil("Pau", "Soy una persona muy casera", hobbies, foods, funFacts);
-        //perfil.mostrarPerfil();
 
-        //Creacion del Scanner para poder interactuar
+        //Crear el objeto perfil
+        SturlesePauPerfil sturlesePauPerfil = new SturlesePauPerfil("Pau", "Soy una persona muy casera", hobbies, foods, funFacts);
+
+
+        //Creación del Scanner para poder interactuar
         Scanner scanner = new Scanner(System.in);
         int option;
 
-        System.out.println("\nABOUT ME: " + perfil.getName());
+        //Creacion del Random para la opción [3]
+        Random random = new Random();
+
+        //Menu y cases
+        System.out.println("\nABOUT ME: " + sturlesePauPerfil.getName());
+
         do {
             System.out.println("\nSelecciona una opción:\n");
             System.out.println("[1] Historia");
@@ -40,17 +47,16 @@ public class Main {
             scanner.nextLine();
             switch(option){
                 case 1:
-                    System.out.println("\nEsta es mi historia!: \n" + perfil.getStory());
+                    System.out.println("\nEsta es mi historia!: \n" + sturlesePauPerfil.getStory());
                     break;
 
                 case 2:
-                    System.out.println("\nFavoritos de " + perfil.getName()+"\n Comidas: " + foods + "\n Hobbies: " + hobbies);
-
+                    System.out.println("\nFavoritos de " + sturlesePauPerfil.getName()+"\n Comidas: " + foods + "\n Hobbies: " + hobbies);
                     break;
 
                 case 3:
-                    System.out.println("\nSabias que... " + " " + funFacts);
-
+                    int randomIndex = random.nextInt(funFacts.size());
+                    System.out.println("\n Sabias que... " + funFacts.get(randomIndex));
                     break;
 
                 case 4:
@@ -62,7 +68,5 @@ public class Main {
             }
 
         }while ( option !=4);
-
     }
-
 }
