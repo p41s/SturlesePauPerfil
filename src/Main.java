@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +22,47 @@ public class Main {
 
         //Crear el objeto perfil y mostrar la información
         Perfil perfil = new Perfil("Pau", "Soy una persona muy casera", hobbies, foods, funFacts);
-        perfil.mostrarPerfil();
+        //perfil.mostrarPerfil();
+
+        //Creacion del Scanner para poder interactuar
+        Scanner scanner = new Scanner(System.in);
+        int option;
+
+        System.out.println("\nABOUT ME: " + perfil.getName());
+        do {
+            System.out.println("\nSelecciona una opción:\n");
+            System.out.println("[1] Historia");
+            System.out.println("[2] Favoritos");
+            System.out.println("[3] Curiosidades");
+            System.out.println("[4] Salir");
+
+            option = scanner.nextInt();
+            scanner.nextLine();
+            switch(option){
+                case 1:
+                    System.out.println("\nEsta es mi historia!: \n" + perfil.getStory());
+                    break;
+
+                case 2:
+                    System.out.println("\nFavoritos de " + perfil.getName()+"\n Comidas: " + foods + "\n Hobbies: " + hobbies);
+
+                    break;
+
+                case 3:
+                    System.out.println("\nSabias que... " + " " + funFacts);
+
+                    break;
+
+                case 4:
+                    System.out.println("\n Hasta la proxima!");
+                    break;
+
+                default:
+                    System.out.println("\n Porfavor, elige una opción correcta");
+            }
+
+        }while ( option !=4);
 
     }
+
 }
